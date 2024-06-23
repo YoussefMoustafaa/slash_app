@@ -1,3 +1,4 @@
+# I haven't completely finished the app yet, so if you can just give me one more day, it'll be all completed
 # Responsive Home Screen App
 
 This project is a Flutter application demonstrating a responsive home screen that adapts seamlessly to both mobile and web platforms. It follows clean architecture principles and the MVVM pattern with Bloc for state management.
