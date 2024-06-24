@@ -15,21 +15,20 @@ class _ImageSliderState extends State<ImageSlider> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    double scalingFactor = screenWidth / 600;
-
     return Column(
       children: [
         Container(
-          height: 200 * scalingFactor,
+          height: screenHeight * 0.2,
           child: PageView.builder(
             controller: _pageController,
             itemCount: widget.imageUrls.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0 * scalingFactor),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0 * scalingFactor),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.02),
                   child: Image.asset(
                     widget.imageUrls[index],
                     fit: BoxFit.cover,
@@ -39,16 +38,16 @@ class _ImageSliderState extends State<ImageSlider> {
             },
           ),
         ),
-        SizedBox(height: 8.0 * scalingFactor,),
+        SizedBox(height: screenHeight * 0.015,),
         SmoothPageIndicator(
           controller: _pageController, 
           count: widget.imageUrls.length,
           effect: ExpandingDotsEffect(
             activeDotColor: Colors.black,
             dotColor: Colors.grey,
-            dotHeight: 8 * scalingFactor,
-            dotWidth: 8 * scalingFactor,
-            spacing: 4 * scalingFactor,
+            dotHeight: screenHeight * 0.01,
+            dotWidth: screenWidth * 0.018,
+            spacing: screenWidth * 0.013,
           ),
         )
       ],

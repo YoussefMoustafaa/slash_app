@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slash/widgets/section_header.dart';
 
 class CategoriesSection extends StatelessWidget {
 
@@ -8,34 +9,37 @@ class CategoriesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    double scalingFactor = screenWidth / 600;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.0 * scalingFactor),
+      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildHeader('Categories', scalingFactor),
-          SizedBox(height: 16.0 * scalingFactor),
+          const SectionHeader(title: 'Categories'),
+          SizedBox(height: screenHeight * 0.015),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: categories.map((category) {
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0 * scalingFactor),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.012),
                   child: Column(
                     children: [
                       CircleAvatar(
                         backgroundColor: const Color(0xff292929),
-                        radius: 50 * scalingFactor,
+                        radius: screenWidth * 0.09,
                         child: Image.asset(
                           'assets/images/${category['icon']}',
-                          width: 70 * scalingFactor,
-                          height: 70 * scalingFactor,
+                          width: screenWidth * 0.1,
+                          height: screenHeight * 0.1,
                         ),
                       ),
-                      SizedBox(height: 4.0 * scalingFactor,),
-                      Text(category['label']!)
+                      SizedBox(height: screenHeight * 0.012,),
+                      Text(
+                        category['label']!,
+                        style: TextStyle(fontSize: screenWidth * 0.035, fontFamily: 'Urbanist'),
+                      )
                     ],
                   ),
                 );
@@ -46,35 +50,5 @@ class CategoriesSection extends StatelessWidget {
       ),  
     );
   }
-
-
-  
-  Widget _buildHeader(String title, double scalingFactor) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: TextStyle(fontSize: 22 * scalingFactor, fontWeight: FontWeight.bold),
-        ),
-        Row(
-          children: [
-            Text(
-              'See All',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16 * scalingFactor
-              )
-            ),
-            SizedBox(width: 4.0 * scalingFactor,),
-            Icon(Icons.arrow_forward_ios, size: 16 * scalingFactor, color: Colors.black,),
-          ],
-        )
-      ],
-    );
-  }
-
-
-
 
 }

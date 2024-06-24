@@ -5,49 +5,49 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    double scalingFactor = screenWidth / 600;
     return AppBar(
         elevation: 0,
         title: Padding(
-          padding: EdgeInsets.all(8.0 * scalingFactor),
+          padding: EdgeInsets.all(screenWidth * 0.01),
           child: Row(
             children: [
               Text(
                 'Slash.',
                 style: TextStyle(
-                fontSize: (24 * scalingFactor),
+                fontSize: (screenWidth * 0.05),
                 fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
               // SizedBox(width: 20 * scalingFactor,),
-              const Icon(Icons.location_on, color: Colors.black,),
-              SizedBox(width: 6 * scalingFactor,),
+              Icon(Icons.location_on, color: Colors.black, size: screenWidth * 0.065,),
+              SizedBox(width: screenWidth * 0.01,),
               Text(
                 'Nasr City\nCairo',
                 style: TextStyle(
-                  fontSize: (20 * scalingFactor),
+                  fontSize: (screenWidth * 0.03),
           
                 ),
               ),
-              Icon(Icons.keyboard_arrow_down, size: 40 * scalingFactor,),
+              Icon(Icons.keyboard_arrow_down, size: screenWidth * 0.08,),
               const Spacer(),
               Stack(
                 children: [
-                  Icon(Icons.notifications_outlined, size: 40 * scalingFactor,),
+                  Icon(Icons.notifications_outlined, size: screenWidth * 0.075,),
                   Positioned(
-                    right: 8 * scalingFactor,
-                    top: 8 * scalingFactor,
+                    right: screenWidth * 0.013,
+                    top: screenHeight * 0.009,
                     child: Container(
-                      padding: EdgeInsets.all(2.0 * scalingFactor),
+                      padding: EdgeInsets.all(screenWidth * 0.001),
                       decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.circular(6 * scalingFactor),
+                        borderRadius: BorderRadius.circular(screenWidth * 0.006),
                       ),
                       constraints: BoxConstraints(
-                        minWidth: 12 * scalingFactor,
-                        minHeight: 12 * scalingFactor
+                        minWidth: 0.022 * screenWidth,
+                        minHeight: 0.012 * screenHeight
                       ),
                     ),
                   )
